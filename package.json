@@ -1,7 +1,7 @@
 {
-  "name": "Panda",
+  "name": "react-redux-template",
   "version": "1.0.0",
-  "description": "熊猫",
+  "description": "redux+react+热加载+兼容IE8+react-router-redux+DevTool",
   "main": "./app/index.js",
   "scripts": {
     "start": "node server.js",
@@ -9,6 +9,11 @@
     "build": "npm run build:webpack",
     "dev": "cross-env NODE_ENV=development webpack --config webpack.config.js"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/hql123/react-redux-template.git"
+  },
+  "author": "PO",
   "license": "MIT",
   "dependencies": {
     "eventsource-polyfill": "^0.9.6",
