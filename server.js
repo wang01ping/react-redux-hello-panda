@@ -1,31 +1,27 @@
-var path = require('path');
-var express = require('express');
+'use strict'
+
 var webpack = require('webpack');
+var WebpackDevServer = require('webpack-dev-server');
 var config = require('./webpack.config');
-
-var app = express();
-var compiler = webpack(config);
-
-app.use(express.static(path.join(__dirname, '/')))
-//use in webpack development mode
-app.use(require('webpack-dev-middleware')(compiler, {
-    noInfo: true,
-    publicPath: config.output.publicPath
-}));
-app.use(require('webpack-hot-middleware')(compiler));
-
-//use in webpack production mode
-//app.use(express.static(__dirname));
-
-app.get('/', function(req, res) {
-    res.sendFile(path.join(__dirname, 'index.html'));
+config.entry.unshift('webpack-dev-server/client?http://localhost:8890',"webpack/hot/dev-server");
+config.plugins.push(new webpack.HotModuleReplacementPlugin());
+config.plugins.push(new webpack.optimize.UglifyJsPlugin({
+        compress: {
+          warnings: false
+        }
+      }))
+var proxy = [{
+    path: "/web/api/v1/*",
+    target: "http://api.chedone.com",
+    host: "chedone.com"
+}]
+//启动服务
+var app = new WebpackDevServer(webpack(config), {
+    publicPath: config.output.publicPath,
+    hot:true,
+    historyApiFallback: true,
+    proxy:proxy
 });
-
-app.listen(3000, 'localhost', function(err) {
-    if (err) {
-        console.log(err);
-        return;
-    }
-
-    console.log('Listening at http://localhost:3000');
+app.listen(8890,function(){
+    console.log('Listening at http://localhost:8890');
 });
