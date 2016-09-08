@@ -1,16 +1,132 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
 <head>
-    <title>Hello Panda</title>
-     <!--[if lt IE 10]>
-    <script src="./shim/shim.js"></script>
-    <![endif]-->
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Hello Panda - iPanda爱熊猫集结号</title>
+  <link rel="stylesheet" type="text/css" href="./common/index.css" />
+  <link rel="icon" href="./common/logo.png">
+  <link rel="shortcut icon" href="./common/logo.png" type="image/x-icon">
+  <!--[if lt IE 10]>
+  <script
+    src="https://as.alipayobjects.com/g/component/??console-polyfill/0.2.2/index.js,es5-shim/4.1.14/es5-shim.min.js,es5-shim/4.1.14/es5-sham.min.js,html5shiv/3.7.2/html5shiv.min.js,media-match/2.0.2/media.match.min.js"></script>
+  <![endif]-->
+  <script src="./common/jquery-3.1.0.min.js"></script>
+  <style>
+    #ant-motion-load {
+      width: 100%;
+      height: 100%;
+      position: fixed;
+      top: 0;
+      -webkit-filter: url("#goo");
+      filter: url("#goo");
+      opacity: 0;
+      transition: opacity .5s;
+      background: #fff;
+    }
+    #ant-motion-load ul {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+    }
+    #ant-motion-load ul li {
+      width: 18px;
+      height: 18px;
+      border-radius: 100%;
+      background: #000;
+      position: absolute;
+      transition: all .5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      left: 0;
+      top: 0;
+      transform: scale(1);
+    }
+    #react-content:empty + #ant-motion-load {
+      opacity: 1;
+    }
+    .content{
+      position: relative;
+      left: -60px;
+      top: -20px;
+      font-size: 30px;
+      transition: all .5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      transform: scale(1);
+    }
+    .content span{
+      font-size: 80px;
+      color: #000;
+      font-weight: bold;
+    }
+  </style>
 </head>
 <body>
-    <div id="app"></div>
-    <!--use in webpack development mode-->
-    <script src="/static/bundle.js"></script>
-    <!--use in webpack production mode-->
-    <!-- <script src="./dist/bundle.js"></script> -->
+<div id="react-content"></div>
+<div id="ant-motion-load">
+  <ul />
+  <div class="content">ello <span>P</span>anda</div>
+</div>
+<script>
+  var w = 350, h = 113, r = 18,
+    wx = w / 2, wy = h / 2 - r, angle = 45, liArray = [], xyArray = [];
+  liArray.push($('.content'));
+  xyArray.push({ x: -60, y: -20 });
+  for (var i = 0; i < 69; i++) {
+    var li = $('<li key='+i+'/>').appendTo($('#ant-motion-load ul'));
+    liArray.push(li);
+    var _left = 110, _top = 110, _x, _y;
+    if (i < 25) {
+      _left = -wx;
+      _top = wy - r / 5 * i;
+    } else if (i < 45) {
+      angle =  Math.PI / 180;
+      _x = -wx + 16 * (r / 5) * Math.cos(Math.PI / 180);
+      _y = wy - r / 10 * 24 + 16 * (r / 10) * Math.sin(Math.PI / 180);
+      _left = _x + (i - 40) * (r / 5) * Math.cos(angle);
+      _top = _y + (i - 40) * (r / 13) * Math.sin(angle);
+    } else if (i < 69) {
+      _left = _x + 10 * (r / 5) * Math.cos(-45 * Math.PI / 180);
+      _top = ( wy - r / 5 * 24) + r / 6 * (i - 45);
+    }
+    xyArray.push({ x: _left, y: _top });
+    li.css({ left: _left, top: _top, width: r, height: r });
+  }
+  var load = $('#ant-motion-load');
+  function animationStart() {
+    if (!load || load.css('opacity') === '0') {
+      load.remove();
+      return;
+    }
+    setTimeout(function () {
+      if (load.css('opacity') === '0') {
+        load.remove();
+        return;
+      }
+      liArray.forEach(function (item, i) {
+        item.css({
+          left: 0, top: 0, transform: 'scale(0)',
+          transitionDelay: (i === xyArray.length - 1 ? 1 : i) * .005 + 's',
+          transitionTimingFunction: 'cubic-bezier(0.68, -0.55, 0.265, 1.55)',
+        });
+      });
+      setTimeout(function () {
+        if (load.css('opacity') === '0') {
+          load.remove();
+          return;
+        }
+        liArray.forEach(function (item, i) {
+          var data = xyArray[i];
+          item.css({
+            left: data.x, top: data.y, transform: 'scale(1)',
+            transitionDelay: (i === xyArray.length - 1 ? 1 : i) * .005 + 's',
+            transitionTimingFunction: 'cubic-bezier(0.175, 0.885, 0.32, 1.275)',
+          });
+        });
+        
+        setTimeout(animationStart, 1300);
+      }, 1300);
+    }, 100);
+  }
+  animationStart();
+</script>
 </body>
+<script src="./static/bundle.js"></script>
 </html>

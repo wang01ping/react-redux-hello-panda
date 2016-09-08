@@ -1,0 +1,6 @@
+.templates-wrapper{
+  display: inline;
+  overflow: unset;
+  user-select: none;
+  -webkit-user-select: none;
+}

@@ -1,0 +1,72 @@
+.pageWrapper{
+  display: inline;
+  overflow: unset;
+  -webkit-user-select: none;
+};
+.splash {
+  position: absolute;
+  z-index: 2000;
+  background: white;
+  color: gray;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+.imageView img{
+  width: 300px;
+  align-items:center;
+  justify-content: center;
+}
+.imageView{
+  flex: 1;
+};
+.splashTitle {
+  text-align: center;
+  max-width: 500px;
+  margin: 5% auto;
+  padding: 20px;
+}
+
+.splashTitle h1 {
+  flex: 1;
+  font-size: 20px;
+  font-weight: 500;
+  font-family: Raleway,Hiragino Sans GB,sans-serif;
+  margin: 20px;
+  align-items:center;
+  justify-content: center;
+}
+
+.textView{
+  flex: 1;
+  margin: 20px;
+};
+.textView p{
+  text-align: center;
+  width: 20px;
+  font-size: 15px;
+  font-weight: 200;
+}
+@media screen and (min-width: 400px) {
+  .textView p{
+    position: relative;
+    left: 200px;
+  }
+}
+@media (max-width: 400px){
+  .textView p{
+    position: relative;
+    left: 150px;
+  }
+};
+.mainWrapper{
+  background: #fff;
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+  margin: 0 auto;
+  padding: 24px 0;
+  margin-bottom: 24px;
+  min-height: 300px;
+}
