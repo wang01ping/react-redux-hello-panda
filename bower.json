@@ -1,0 +1,27 @@
+{
+  "name": "Panda",
+  "version": "0.0.0",
+  "homepage": "https://github.com/hql123/react-redux-hello-panda",
+  "authors": [
+    "hql <he.qinlu@163.com>"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  
+  "exportsOverride": {
+    "bootstrap": {
+      "js": "dist/js/*.js",
+      "css": "dist/css/*.css",
+      "fonts": "dist/fonts/*"
+    },
+    "jquery": {
+      "js": "dist/*"
+    }
+  }
+}

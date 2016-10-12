@@ -5,7 +5,7 @@ import TweenOne from 'rc-tween-one';
 import BannerAnim, { Element } from 'rc-banner-anim';
 import Icon from 'antd/lib/icon';
 import OverPack from 'rc-scroll-anim/lib/ScrollOverPack';
-import  '../css/banner.less';
+import  '../less/banner.less';
 import 'rc-banner-anim/assets/index.css';
 
 const BgElement = Element.BgElement;
@@ -30,7 +30,7 @@ class Banner extends React.Component {
         <QueueAnim type={['bottom','top']} delay={200} className='banner-title'
           key="text"
         >
-          {item.logo ? <span className="logo" key="logo"><img width="100%" src={item.logo} /></span> : null}
+          {item.logo ? <span className="logo" key="logo"><img width="100%" src={item.logo} /></span> : <span className="logo" key="logo">HelloPanda猫粉分享平台</span>}
           {item.title ? <h1 key="h1">{item.title}</h1> : null}
           <p key="content">{item.content}</p>
           <Button type="ghost" key="button">{item.button}</Button>

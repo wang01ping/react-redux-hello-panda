@@ -1,7 +1,7 @@
 import React, { PropTypes } from 'react';
 import TweenOne from 'rc-tween-one';
 import OverPack from 'rc-scroll-anim/lib/ScrollOverPack';
-import '../css/footer.less';
+import '../less/footer.less';
 
 class Footer extends React.Component {
   render() {

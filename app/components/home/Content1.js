@@ -3,8 +3,8 @@ import Button from 'antd/lib/button';
 import QueueAnim from 'rc-queue-anim';
 import TweenOne from 'rc-tween-one';
 import OverPack from 'rc-scroll-anim/lib/ScrollOverPack';
-import '../../css/content.less';
-import '../../css/content1.less';
+import '../../less/content.less';
+import '../../less/content1.less';
 
 class Content extends React.Component {
 

@@ -6,7 +6,7 @@ import Footer from '../components/account/Footer';
 import { bindActionCreators } from 'redux';
 import { QueueAnim, BackTop } from 'antd';
 import * as Actions from '../actions';
-import styles from '../css/index.css';
+import styles from '../less/index.less';
 
 class App extends Component{
   constructor(props) {

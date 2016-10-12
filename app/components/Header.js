@@ -3,7 +3,7 @@ import React from 'react';
 import TweenOne from 'rc-tween-one';
 import { Link, browserHistory } from 'react-router'
 import 'antd/dist/antd.css';
-import  '../css/header.css';
+import  '../less/header.less';
 import { connect } from 'react-redux';
 
 const SubMenu = Menu.SubMenu;

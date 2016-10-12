@@ -12,7 +12,7 @@ const {Home, Panda, Science} = require('./views');
 const {Login, Signup} = require('./views/account');
 const store = configureStore();
 const history = syncHistoryWithStore(browserHistory, store);
-require('./css/index.css');
+require('./less/index.less');
 
 render(
   <Provider store={store}>

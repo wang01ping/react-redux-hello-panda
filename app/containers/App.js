@@ -6,7 +6,7 @@ import Content from '../components/Content';
 import { bindActionCreators } from 'redux';
 import { QueueAnim, BackTop } from 'antd';
 import * as Actions from '../actions';
-import '../css/index.css';
+import '../less/index.less';
 
 class App extends Component{
   constructor(props) {
